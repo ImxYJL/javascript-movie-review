@@ -6,6 +6,7 @@ const BASE_URL = "https://api.themoviedb.org/3";
 
 export const getMovieDetailsData = async (movieId: string) => {
   if (!API_KEY) {
+    console.log(API_KEY);
     throw new Error(
       "유효하지 않은 API 키입니다. API 키를 확인하고 다시 시도해주세요."
     );
