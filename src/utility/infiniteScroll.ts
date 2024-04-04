@@ -1,18 +1,8 @@
-import { $, createElement } from "./dom";
-
 export const infiniteScroll = {
   isLoading: false,
   allDataLoaded: false,
 
-  addScrollAnchorDiv() {
-    const scrollAnchorDiv = createElement("div", { class: "scroll-anchor" });
-    scrollAnchorDiv.style.height = "1px";
-
-    $(".item-view")?.appendChild(scrollAnchorDiv);
-  },
-
   async addInfiniteScroll(callback: () => Promise<void>) {
-    this.addScrollAnchorDiv();
     this.observeLastItem(callback);
   },
 
@@ -27,21 +17,20 @@ export const infiniteScroll = {
   },
 
   observeLastItem(callback: () => Promise<void>): void {
-    const scrollAnchor = document.querySelector(".scroll-anchor");
-    if (!scrollAnchor) return;
+    const thumbnails = document.querySelectorAll(".item-thumbnail");
+    const lastItem = thumbnails[thumbnails.length - 1] as HTMLElement;
+    if (!lastItem) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            this.fetchMoreItems(callback);
-            observer.unobserve(entry.target);
-          }
-        });
+        if (entries[0].isIntersecting) {
+          this.fetchMoreItems(callback);
+          observer.unobserve(entries[0].target);
+        }
       },
-      { threshold: 0.2 }
+      { threshold: 0.9 }
     );
 
-    observer.observe(scrollAnchor);
+    observer.observe(lastItem);
   },
 };
