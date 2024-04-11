@@ -17,8 +17,8 @@ dialog {
   margin: 0;
   padding: 0;
 
-  width: 55vw;
-  height: 50vh;
+  width: fit-content;
+  height: fit-content;
 
   box-sizing: border-box;
   border: none;
