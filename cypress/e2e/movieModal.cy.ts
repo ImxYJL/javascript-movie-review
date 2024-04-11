@@ -34,7 +34,7 @@ describe("모달 동작 테스트", () => {
       cy.get(".modal-title").should("contain.text", movieDetails.title);
       cy.get(".modal-genres").should(
         "contain.text",
-        movieDetails.genres.map((genre) => genre.name).join(", ")
+        movieDetails.genres.map((genre: any) => genre.name).join(", ")
       );
     });
   });
