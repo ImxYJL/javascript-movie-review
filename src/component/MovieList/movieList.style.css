@@ -1,3 +1,7 @@
+* {
+  background-color: gray;
+}
+
 .item-view,
 .item-test {
   width: 100%;
