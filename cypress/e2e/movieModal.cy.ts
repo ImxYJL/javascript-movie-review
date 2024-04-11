@@ -20,7 +20,9 @@ describe("모달 동작 테스트", () => {
     cy.get('.search-box input[type="text"]').clear().type(movieNameForSearch);
     cy.get(".search-box .search-button").click();
 
-    cy.request("GET", movieDetailsQueryString).as("movieDetails");
+    cy.intercept(movieDetailsQueryString, {
+      fixture: "movie-harry-details.json",
+    }).as("movieDetails");
 
     // when
     cy.get(`#${movieId}`).click();
@@ -29,8 +31,6 @@ describe("모달 동작 테스트", () => {
     cy.get(".modal-backdrop").should("be.visible");
 
     cy.fixture("movie-harry-details.json").then((movieDetails) => {
-      cy.get(".modal-backdrop").should("be.visible");
-
       cy.get(".modal-title").should("contain.text", movieDetails.title);
       cy.get(".modal-genres").should(
         "contain.text",

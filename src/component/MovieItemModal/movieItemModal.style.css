@@ -17,8 +17,8 @@ dialog {
   margin: 0;
   padding: 0;
 
-  width: 800px;
-  height: 400px;
+  width: 700px;
+  height: fit-content;
 
   box-sizing: border-box;
   border: none;
@@ -116,7 +116,7 @@ dialog {
   white-space: normal;
   overflow: auto;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 8;
   -webkit-box-orient: vertical;
   word-break: keep-all;
 }
@@ -180,11 +180,27 @@ dialog {
     font-size: 0.9rem;
   }
 
+  .right-modal-content-wrapper {
+    justify-content: flex-start;
+  }
+
+  .tab-section {
+    margin-bottom: 1.2rem;
+  }
+
+  .modal-movie-overview-wrapper {
+    min-height: fit-content;
+    max-height: fit-content;
+    margin-bottom: 1.2rem;
+  }
+
   .my-score-section {
     display: flex;
+    height: 7vh;
     padding: 0.9rem 1.5rem;
-    width: 35vw;
     flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
   }
 
   .my-score-section label {
@@ -192,7 +208,6 @@ dialog {
     font-size: 0.9rem;
     flex-grow: 0;
     margin-right: 0.5rem;
-    flex-grow: 1;
   }
 
   .myscore-description {
