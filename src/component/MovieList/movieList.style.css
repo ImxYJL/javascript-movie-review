@@ -1,3 +1,7 @@
+* {
+  background-color: cornflowerblue;
+}
+
 .item-view,
 .item-test {
   width: 100%;
